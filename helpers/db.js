@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 
 module.exports = () => {
-    mongoose.connect("mongodb+srv://root:12541430@cluster0-rnwwk.mongodb.net/todo?retryWrites=true&w=majority", {useNewUrlParser: true});
+    mongoose.connect("mongodb+srv://root:12541430@cluster0-rnwwk.mongodb.net/todo?retryWrites=true&w=majority", {useUnifiedTopology: true});
 
     mongoose.connection.on('open', () => {
         console.log('MongoDB: Connected');
