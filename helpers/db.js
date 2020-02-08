@@ -1,10 +1,7 @@
 var mongoose = require('mongoose')
-
+const url = 'mongodb+srv://root:12541430@cluster0-rnwwk.mongodb.net/todo'
 module.exports = () => {
-  mongoose.connect(
-    'mongodb+srv://root:12541430@cluster0-rnwwk.mongodb.net/todo',
-    { useUnifiedTopology: true, useNewUrlParser: true }
-  )
+  mongoose.connect(url, { useUnifiedTopology: true, useNewUrlParser: true })
 
   mongoose.connection.on('open', () => {
     console.log('MongoDB: Connected')
