@@ -27,7 +27,13 @@ router.post('/', function(req, res, next) {
   })
     .save()
     .then(() => {
-      res.json('Kaydetme İşlemi Başarılı.')
+      Todo.find()
+      .then(todos => {
+        res.json(todos)
+      })
+      .catch(err => {
+        res.json(err)
+      })
     })
     .catch(err => {
       res.json('Kaydetme İşleminde Hata Oluştu.')
@@ -40,7 +46,13 @@ router.put('/:id', function(req, res, next) {
 
   Todo.findByIdAndUpdate({ _id: id }, req.body)
     .then(newTodo => {
-      res.json('Güncelleme İşlemi Başarılı.')
+      Todo.find()
+      .then(todos => {
+        res.json(todos)
+      })
+      .catch(err => {
+        res.json(err)
+      })
     })
     .catch(err => {
       res.json('Güncelleme İşleminde Hata Oluştu.')
@@ -51,7 +63,13 @@ router.delete('/:id', function(req, res, next) {
   var id = req.params.id
   Todo.findByIdAndRemove(id)
     .then(() => {
-      res.json('Silme İşlemi Başarılı.')
+      Todo.find()
+      .then(todos => {
+        res.json(todos)
+      })
+      .catch(err => {
+        res.json(err)
+      })
     })
     .catch(err => {
       res.json('Silme İşleminde Hata Oluştu.')
